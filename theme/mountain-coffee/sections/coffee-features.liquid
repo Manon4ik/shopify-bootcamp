@@ -1,0 +1,102 @@
+{%- style -%}
+{%- endstyle -%}
+
+<section class="coffee-features">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="coffee-features__title">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    {% if section.settings.description %}
+      <p class="coffee-features__description">
+        {{ section.settings.description }}
+      </p>
+    {% endif %}
+
+    <div class="coffee-features__grid">
+      {% for block in section.blocks %}
+        <div class="coffee-feature" {{ block.shopify_attributes }}>
+          <div class="coffee-feature__icon">
+            {{ block.settings.icon }}
+          </div>
+
+          <h3 class="coffee-feature__heading">
+            {{ block.settings.title }}
+          </h3>
+
+          <p class="coffee-feature__text">
+            {{ block.settings.text }}
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CoffeeFeatured",
+  "tag": "section",
+  "class": "coffee-f-eatured",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHY CHOOSE US"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover why customers love our freshly roasted, organic coffee."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f8f5f0"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#2c2c2c"
+    }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_picker",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Fresh Roasted"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Freshly roasted coffee with rich aroma and balanced flavor."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coffee Features"
+    }
+  ]
+}
+{% endschema %}
