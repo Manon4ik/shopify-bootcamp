@@ -1,4 +1,24 @@
 {%- style -%}
+
+.coffee-features{
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+}
+
+  @media screen and (min-width: 750px) {
+    /* Tablet */
+    .coffee-features__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (min-width: 990px) {
+    /* Desktop */
+    .coffee-features__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 {%- endstyle -%}
 
 <section class="coffee-features">
@@ -95,7 +115,19 @@
   ],
   "presets": [
     {
-      "name": "Coffee Features"
+      "name": "Coffee Features",
+      "category": "Mountain Coffee",
+      "blocks": [
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
     }
   ]
 }
