@@ -21,17 +21,19 @@
   }
 {%- endstyle -%}
 
+{% assign heading = section.settings.section_heading %}
+
 <section class="coffee-features">
   <div class="page-width">
-    {% if section.settings.heading != blank %}
+    {% if heading != blank %}
       <h2 class="coffee-features__title">
-        {{ section.settings.heading }}
+        {{ heading }}
       </h2>
     {% endif %}
 
-    {% if section.settings.description %}
+    {% if section.settings.section_description %}
       <p class="coffee-features__description">
-        {{ section.settings.description }}
+        {{ section.settings.section_description }}
       </p>
     {% endif %}
 
@@ -43,11 +45,11 @@
           </div>
 
           <h3 class="coffee-feature__heading">
-            {{ block.settings.title }}
+            {{ block.settings.feature_title }}
           </h3>
 
           <p class="coffee-feature__text">
-            {{ block.settings.text }}
+            {{ block.settings.feature_description }}
           </p>
         </div>
       {% endfor %}
@@ -64,13 +66,13 @@
   "settings": [
     {
       "type": "text",
-      "id": "heading",
+      "id": "section_heading",
       "label": "Heading",
       "default": "WHY CHOOSE US"
     },
     {
       "type": "textarea",
-      "id": "description",
+      "id": "section_description",
       "label": "Description",
       "default": "Discover why customers love our freshly roasted, organic coffee."
     },
@@ -100,13 +102,13 @@
         },
         {
           "type": "text",
-          "id": "title",
+          "id": "feature_title",
           "label": "Title",
           "default": "Fresh Roasted"
         },
         {
           "type": "textarea",
-          "id": "text",
+          "id": "feature_description",
           "label": "Description",
           "default": "Freshly roasted coffee with rich aroma and balanced flavor."
         }
